@@ -7,6 +7,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.ArrayList;
 
@@ -15,6 +17,13 @@ public class UsersecurityApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(UsersecurityApplication.class, args);
+	}
+
+	@Bean
+	PasswordEncoder passwordEncoder(){
+		// whenever our application runs, then we will have this bean available to use and we can use it
+		// because it's a class we just need to create an instance
+		return new BCryptPasswordEncoder();
 	}
 
 	// this will run after the application runs
